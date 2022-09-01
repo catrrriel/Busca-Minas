@@ -1,0 +1,94 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins&display=swap");
+body {
+  font-family: "Poppins", sans-serif;
+  margin: 0;
+  background-color: #393e46;
+}
+
+.header {
+  position: absolute;
+  font-size: 2.4vh;
+  text-align: center;
+  width: 60vh;
+  height: 30vh;
+  background-color: #eeeeee;
+  left: 2vh;
+  top: 2vh;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.form input {
+  width: 6vh;
+  height: 3vh;
+  text-align: center;
+}
+
+.btn-generate {
+  margin-top: 2vh;
+  outline: none;
+  width: 6.5vh;
+  height: 4vh;
+  border: none;
+  background-color: #a62828d2;
+  transition: 0.3s;
+}
+
+.btn-generate:active {
+  border: 1px solid #d38383d2;
+}
+
+.btn-generate:hover {
+  cursor: pointer;
+  background-color: #d38383d2;
+}
+
+.container-game {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 50vh;
+}
+
+.game {
+  display: flex;
+  flex-wrap: wrap;
+  background-color: #a62828d2;
+  margin-bottom: 2vh;
+}
+
+.game :hover {
+  cursor: pointer;
+}
+
+.game div {
+  height: 50px;
+  width: 50px;
+  box-sizing: border-box;
+  border: 1px solid black;
+}
+
+.marked {
+  background-color: #d38383d2;
+  font-size: 25px;
+  text-align: center;
+}
+
+.flag {
+  font-size: 25px;
+  text-align: center;
+}
+
+.result {
+  font-size: 40px;
+  width: 300px;
+  text-align: center;
+  position: relative;
+  background-color: #a62828d2;
+  color: rgb(0, 0, 0);
+}
