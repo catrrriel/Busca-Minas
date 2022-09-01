@@ -4,6 +4,7 @@ const result = document.querySelector(".result");
 const flagCounter = document.getElementById("num-flags");
 const remainingFlagCounter = document.getElementById("remaining-flags");
 const btnGenerate = document.querySelector(".btn-generate");
+const ocult = document.querySelector(".ocult");
 
 btnGenerate.addEventListener("click", () => {
   createGame();
@@ -22,6 +23,7 @@ const addNumbers = () => {
     const rigthSide = i % width === width - 1;
 
     if (table[i].classList.contains("empty")) {
+      console.log(table);
       //caja anterior
       if (i > 0 && !leftSide && table[i - 1].classList.contains("bomb"))
         total++;
@@ -98,17 +100,18 @@ const bomb = (boxClicked) => {
 const addFlags = (box) => {
   if (endGame) return;
 
-  if (!box.classList.contains("marked") && numFlags < numBombs) {
-    if (!box.classList.contains("flag")) {
+  if (!box.classList.contains("marked")) {
+    if (!box.classList.contains("flag") && numFlags < numBombs) {
       box.classList.add("flag");
       box.innerHTML = "🚩";
       numFlags++;
       updateNumFlags();
       checkGame();
-    } else {
+    } else if (box.classList.contains("flag")) {
       box.classList.remove("flag");
       box.innerHTML = "";
       numFlags--;
+      updateNumFlags();
     }
   }
 };
@@ -136,10 +139,12 @@ const checkGame = () => {
 };
 
 const click = (box) => {
+  console.log(box);
   if (
-    box.classList.contains("marked") ||
-    box.classList.contains("flag") ||
-    endGame
+    !box &&
+    (box.classList.contains("marked") ||
+      box.classList.contains("flag") ||
+      endGame)
   )
     return;
 
@@ -152,6 +157,15 @@ const click = (box) => {
       box.classList.add("marked");
       box.innerHTML = total;
       return;
+    } else {
+      click(table[box.id - width - 1]); //arriba izq
+      click(table[box.id - width]); //arriba
+      click(table[box.id - width + 1]); // arriba der
+      click(table[box.id + 1]); // derecha
+      click(table[box.id + width + 1]); //abajo der
+      click(table[box.id + width]); // abajo
+      click(table[box.id + width - 1]); //abajo izq
+      click(table[box.id - 1]); //izq
     }
 
     box.classList.add("marked");
@@ -161,6 +175,7 @@ const click = (box) => {
 const createGame = () => {
   width = parseInt(document.getElementById("size").value);
   numBombs = parseInt(document.getElementById("num-bombs").value);
+  ocult.classList.remove("ocult");
 
   if (containerGame.classList.contains("hidden")) {
     containerGame.classList.remove("hidden");

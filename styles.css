@@ -92,3 +92,7 @@ body {
   background-color: #a62828d2;
   color: rgb(0, 0, 0);
 }
+
+.ocult {
+  display: none;
+}

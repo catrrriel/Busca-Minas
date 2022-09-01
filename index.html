@@ -12,17 +12,17 @@
       <div class="form">
         <div class="condition">
           <label for="size">Tamaño del tablero (min. 6): </label>
-          <input id="size" type="number" min="6" />
+          <input id="size" type="number" min="6" value="6" />
         </div>
         <div class="condition">
           <label for="num-bombs">Cantidad de bombas (min. 1): </label>
-          <input id="num-bombs" type="number" min="1" />
+          <input id="num-bombs" type="number" min="1" value="4" />
         </div>
       </div>
       <button class="btn-generate">Jugar</button>
     </div>
     <div class="container-game hidden">
-      <h2>
+      <h2 class="ocult">
         Banderas colocadas: <span id="num-flags"></span> (faltan
         <span id="remaining-flags"></span>)
       </h2>
